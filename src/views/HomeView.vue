@@ -6,7 +6,7 @@
 
     <!-- Preloader -->
     <div ref="preloader" class="fixed top-0 left-0 w-full h-screen z-50 bg-[#0f0f0f] text-white flex items-center justify-center text-2xl font-semibold">
-      <span ref="preloaderText">Welcome to you</span>
+      <span ref="preloaderText">Welcome to home</span>
     </div>
 
     <section class="relative h-[100vh] w-full p-4 place-content-center flex flex-col gap-12 md:justify-center md:items-center z-10 ">
@@ -30,6 +30,7 @@
   import * as anime from 'animejs'
   import WorkView from '@/views/WorkView.vue'
   import MarqueeBrand from '@/components/MarqueeBrand.vue'
+  // import StickyFooter from '@/components/StickyFooter.vue'
 
   
   // import anime from 'animejs'

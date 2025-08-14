@@ -27,7 +27,7 @@ watch(isDark, (val) => {
 
 <template>
   <main>
-    <header class="flex absolute p-4 w-full place-content-center items-center fixed z-20">
+    <header class="flex absolute p-4 w-full place-content-center items-center fixed z-30">
       <div class="wrapper w-full max-w-[769px] px-6 py-4 flex bg-[#bbbbbb76] dark:bg-[#222222aa] rounded-full items-center justify-between">
         <!-- Logo -->
         <img class="h-[32px] w-[32px]" src="@/assets/logo/logolight.png" alt="Logo Light" />

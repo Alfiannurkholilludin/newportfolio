@@ -41,7 +41,7 @@
 
       <!-- Tombol -->
       <div class="text-center mt-12">
-        <a href="#portfolio" class="px-6 py-3 bg-gray-900 text-white font-semibold rounded-full hover:bg-gray-700 transition-colors">
+        <a href="#portfolio" class="px-4 py-2 dark:border-1 hover:dark:bg-[#f5f5f5] hover:dark:text-[#0f0f0f] font-semibold rounded-full transition-colors">
           See All Projects
         </a>
       </div>
@@ -71,11 +71,11 @@ export default {
         image: img1,
       },
       {
-        title: "E-Commerce Dashboard",
+        title: "SmartCart By ITC",
         image: img2,
       },
       {
-        title: "Travel Booking Website",
+        title: "Motekar Studio",
         image: img3,
       },
     ];

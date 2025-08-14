@@ -5,9 +5,9 @@
     @mouseleave="resumeMarquee"
   >
     <!-- Efek blur kiri -->
-    <div class="absolute left-0 top-0 h-full w-[120px] pointer-events-none fade-edge-left z-1"></div>
+    <div class="absolute left-0 top-0 h-full w-[120px] pointer-events-none bg-linear-to-r from-[#f5f5f5] to-[#f5f5f51f] dark:bg-linear-to-r dark:from-[#0f0f0f] dark:to-[#0f0f0f00] fade-edge-left z-1"></div>
     <!-- Efek blur kanan -->
-    <div class="absolute right-0 top-0 h-full w-[120px] pointer-events-none fade-edge-right z-1"></div>
+    <div class="absolute right-0 top-0 h-full w-[120px] pointer-events-none bg-linear-to-l from-[#f5f5f5] to-[#f5f5f51f] dark:bg-linear-to-l dark:from-[#0f0f0f] dark:to-[#0f0f0f00] fade-edge-right z-1"></div>
 
     <!-- Track logo -->
     <div ref="track" class="flex marquee-track">
@@ -36,6 +36,7 @@ import logo1 from "@/assets/brand/balifiber.png";
 import logo2 from "@/assets/brand/balitower.png";
 import logo3 from "@/assets/brand/pim 2.png";
 import logo4 from "@/assets/brand/Bakti.png";
+import logo5 from "@/assets/brand/motekar.png";
 // import logo5 from "@/assets/brand/windows.png";
 // import logo6 from "@/assets/brand/Bakti.png";
 
@@ -44,7 +45,7 @@ export default {
     const track = ref(null);
     const marqueeTween = ref(null);
 
-    const logos = [logo1, logo2, logo3, logo4];
+    const logos = [logo1, logo2, logo3, logo4, logo5];
     const loopedLogos = computed(() => [...logos, ...logos, ...logos]); // lebih banyak biar looping mulus
 
     onMounted(() => {
@@ -86,22 +87,22 @@ export default {
 }
 
 /* Efek blur kiri */
-.fade-edge-left {
-  background: linear-gradient(to right, white, transparent);
+/* .fade-edge-left {
+  background: linear-gradient(to right, #f5f5f5, transparent);
   filter: blur(2px);
 }
 
 .fade-edge-right {
-  background: linear-gradient(to left, white, transparent);
+  background: linear-gradient(to left, #f5f5f5, transparent);
   filter: blur(2px);
-}
+} */
 
 /* Dark mode */
 :deep(html.dark) .fade-edge-left {
-  background: linear-gradient(to right, #0f172a, transparent);
+  background: linear-gradient(to right, #0f0f0f, transparent);
 }
 
-:deep(html  .dark) .fade-edge-right {
-  background: linear-gradient(to left, #0f172a, transparent);
+:deep(html.dark) .fade-edge-right {
+  background: linear-gradient(to left, #0f0f0f, transparent);
 }
 </style>

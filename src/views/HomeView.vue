@@ -19,7 +19,9 @@
       </div>
     </section>
     <!-- <MarqueeBrand /> -->
-    <WorkView />
+     <!-- <WorkExperience /> -->
+     <Experience />
+    <!-- <WorkView /> -->
   </main>
 </template>
 
@@ -27,9 +29,11 @@
   import { onMounted, ref, nextTick } from 'vue'
   import Matter from 'matter-js'
   import gsap from 'gsap'
-  import * as anime from 'animejs'
-  import WorkView from '@/views/WorkView.vue'
-  import MarqueeBrand from '@/components/MarqueeBrand.vue'
+  // import * as anime from 'animejs'
+  // import WorkView from '@/views/WorkView.vue'
+  // import MarqueeBrand from '@/components/MarqueeBrand.vue'
+  import Experience from '@/components/Experience.vue'
+// import WorkExperience from '@/components/WorkExperience.vue'
   // import StickyFooter from '@/components/StickyFooter.vue'
 
   

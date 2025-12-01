@@ -1,12 +1,14 @@
 <template>
     <main>
         <section>
-            <h1>Ini adalah Blog</h1>
+            <h1>Jelajahi</h1>
         </section>
     </main>
 </template>
 
 <script>
+import ImageScrollDist from '@/components/ImageScrollDist.vue'
+
 
 </script>
 

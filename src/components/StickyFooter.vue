@@ -1,6 +1,6 @@
 <template>
   <section class="wrapper-footer z-0">
-    <img class="" src="@/assets/Footer.png" alt="footer" />
+    <h1 class="text-[16rem]">Alfian Nur</h1>
   </section>
 </template>
 

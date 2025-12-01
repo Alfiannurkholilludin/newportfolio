@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import ProjectDetailPage from '@/views/ProjectDetailPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,12 @@ const router = createRouter({
       path: '/mywork',
       name: 'work',
       component: () => import('../views/WorkView.vue'),
+    },
+    {
+      path: '/projects/:slug', // Slug akan ditangkap di sini
+      name: 'ProjectDetail',
+      component: ProjectDetailPage,
+      props: true // Untuk meneruskan 'slug' sebagai prop ke ProjectDetail.vue
     },
   ],
 })

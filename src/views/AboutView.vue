@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full h-fit flex flex-col items-start px-8 md:px-24 py-32 relative">
+  <section class="w-full h-fit flex flex-col items-start p-20 relative overflow-x-hidden">
     <!-- Preloader -->
     <div ref="preloader" class="fixed top-0 left-0 w-full h-screen z-50 bg-[#0f0f0f] text-white flex items-center justify-center text-2xl font-semibold">
       <span ref="preloaderText">Welcome to my story journey</span>
@@ -20,7 +20,7 @@
           :modules="[Navigation, Pagination, Autoplay]"
           :navigation="true"
           :pagination="{ clickable: true, renderBullet }"
-          :autoplay="{ delay: 8000, disableOnInteraction: false }"
+          :autoplay="{ delay: 5000, disableOnInteraction: false }"
           loop="true"
           class="w-full"
           >
@@ -34,6 +34,8 @@
       <!-- <MarqueeBrand /> -->
     </div>
     <ScrollVelocity />
+    <WorkExperience />
+    <Footer1Page />
     <!-- <ImageScrollDist /> -->
   </section>
 </template>
@@ -54,6 +56,9 @@ import img3 from "@/assets/profile/Slider 3.png"
 import MarqueeBrand from '@/components/MarqueeBrand.vue'
 import ScrollVelocity from '@/components/ScrollVelocity.vue'
 import ImageScrollDist from '@/components/ImageScrollDist.vue'
+import WorkExperience from '@/components/WorkExperience.vue'
+import Footer1Page from '@/components/Footer1Page.vue'
+// import WorkProjects from '@/components/WorkProjects.vue'
 
 
 const slides = [

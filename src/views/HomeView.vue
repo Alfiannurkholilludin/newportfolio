@@ -21,6 +21,7 @@
     <!-- <MarqueeBrand /> -->
      <!-- <WorkExperience /> -->
      <Experience />
+     <Footer1Page />
     <!-- <WorkView /> -->
   </main>
 </template>
@@ -33,6 +34,8 @@
   // import WorkView from '@/views/WorkView.vue'
   // import MarqueeBrand from '@/components/MarqueeBrand.vue'
   import Experience from '@/components/Experience.vue'
+import StickyFooter from '@/components/StickyFooter.vue'
+import Footer1Page from '@/components/Footer1Page.vue'
 // import WorkExperience from '@/components/WorkExperience.vue'
   // import StickyFooter from '@/components/StickyFooter.vue'
 

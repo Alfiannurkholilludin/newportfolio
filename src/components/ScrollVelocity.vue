@@ -10,7 +10,7 @@
     <!-- Baris 2 -->
     <div ref="line2" class="whitespace-nowrap flex gap-8 text-6xl md:text-8xl font-bold">
       <span v-for="n in 6" :key="'l2-' + n" class="inline-block text_velo">
-        UI Designer, Product Designer, Frontend Developer, 
+        UI Designer, Product Designer, Frontend Developer,
       </span>
     </div>
   </section>

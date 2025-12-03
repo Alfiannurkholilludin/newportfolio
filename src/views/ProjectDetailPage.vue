@@ -1,5 +1,5 @@
 <template>
-    
+  <main>
   <div class="project-detail-page p-8">
     <img :src="currentProject.image" :alt="currentProject.title" class="w-full h-[800px] object-cover mb-16 rounded-lg shadow-lg"/>
     <!-- <p>{{ currentProject.description }}</p> -->
@@ -45,7 +45,8 @@
       Kembali ke Daftar Proyek
     </button> -->
   </div>
-  
+  <ScrollButton />
+  </main>
 </template>
 
 <script>
@@ -58,6 +59,9 @@ import img3 from "../assets/project/3.png";
 import imgbali1 from "../assets/project/bali1.png";
 import imgbali2 from "../assets/project/balifiber.png";
 import Footer1Page from '@/components/Footer1Page.vue';
+// import ScrollButton from '@/components/ScrollButton.vue';
+import ScrollButton from '@/components/ScrollButton.vue'
+// import ScrollButton from '@/components/ScrollButton.vue';
 
 // Impor semua data proyek Anda (Anda mungkin ingin memindahkannya ke file data terpisah)
 const ALL_PROJECTS = [
@@ -98,6 +102,11 @@ const ALL_PROJECTS = [
 ];
 
 export default {
+  components: {
+    ScrollButton,
+    Footer1Page
+  },
+
   name: 'ProjectDetail',
   // Jika props: true disetel di router.js, slug akan tersedia sebagai prop
   props: {

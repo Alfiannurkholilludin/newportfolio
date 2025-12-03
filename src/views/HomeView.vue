@@ -22,6 +22,7 @@
      <!-- <WorkExperience /> -->
      <Experience />
      <Footer1Page />
+     <ScrollButton />
     <!-- <WorkView /> -->
   </main>
 </template>
@@ -36,6 +37,7 @@
   import Experience from '@/components/Experience.vue'
 import StickyFooter from '@/components/StickyFooter.vue'
 import Footer1Page from '@/components/Footer1Page.vue'
+import ScrollButton from '@/components/ScrollButton.vue'
 // import WorkExperience from '@/components/WorkExperience.vue'
   // import StickyFooter from '@/components/StickyFooter.vue'
 

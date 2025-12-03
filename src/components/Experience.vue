@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full h-[70vh] flex flex-col justify-center p-4 md:p-20 relative overflow-hidden transition-colors duration-500">
+  <section class="w-full h-[70vh] flex flex-col justify-center relative overflow-hidden transition-colors duration-500 p-20">
     <div class="container flex flex-col gap-8 mx-auto">
       <!-- Judul -->
       <h1 class="text_title text-5xl font-bold pb-8">

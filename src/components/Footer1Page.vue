@@ -1,8 +1,8 @@
 <template>
-    <section>
+    <section class="p-20">
         <div>
-            <div class="wrapper-text-r flex flex-col items-end pr-20 mb-16 gap-8">
-                <a href="mailto:alfiannurkholilludin@gmail.com" class="text-4xl">alfiannurkholilludin@gmail.com</a>
+            <div class="wrapper-text-r flex flex-col items-end mb-16 gap-8">
+                <a href="mailto:alfiannurkholilludin@gmail.com" class="teks-hover text-4xl">alfiannurkholilludin@gmail.com</a>
                 <div :class="{'flex gap-4 items-end': true}">
                     <a href="" class="teks-hover text-2xl">Instagram <i class='bx-fw bx-arrow-up-right-stroke'></i></a>
                     <a href="" class="teks-hover text-2xl">Facebook <i class='bx-fw bx-arrow-up-right-stroke'></i></a>
@@ -10,17 +10,17 @@
                 </div>
             </div>
         </div>
-        <div class="wrapper-text-c flex items-center justify-between p-20">
-            <a href="#">[ BEHANCE ]</a>
-            <a href="#">[ DRIBBBLE ]</a>
-            <a href="#">[ LINKEDIN ]</a>
+        <div class="wrapper-text-c flex items-center justify-between pt-20 pb-20">
+            <a href="#" class="teks-hover">[ BEHANCE ]</a>
+            <a href="#" class="teks-hover">[ DRIBBBLE ]</a>
+            <a href="#" class="teks-hover">[ LINKEDIN ]</a>
         </div>
         <div class="wrapper-text-b h-[40vh]">
             <div class="content-wrapper">
                 <h1 class="split">Alfian Nur</h1>
             </div>
         </div>
-        <div class="wrapper-text-d flex justify-between items-center p-20">
+        <div class="wrapper-text-d flex justify-between items-center pt-20">
             <DigitalClock />
             <h5>© All right reserved.<br>2025 Alfian Nur</h5>
         </div>
@@ -65,11 +65,11 @@ onMounted(() => {
 
 <style scoped>
 /* --- STYLE ANIMASI --- */
-section {
-    /* height: 100vh; */
-    /* margin-top: 20vh; */
-    /* background-color: antiquewhite; */
-}
+/* section {
+    height: 100vh;
+    margin-top: 20vh;
+    background-color: antiquewhite;
+} */
 
 .content-wrapper {
     display: flex;
@@ -89,7 +89,7 @@ section {
 
 .teks-hover {
     /* font-size: 80px; */
-    font-family: Arial, sans-serif;
+    font-family: "SFPRODISPLAYREGULER", sans-serif;
     /* color: black; */
     text-decoration: none;
     cursor: pointer;
@@ -109,7 +109,7 @@ section {
     left: 0;
     background-color: #fff; /* Warna garis */
     transform-origin: bottom right;
-    transition: transform 0.3s ease-out; /* Animasi munculnya garis */
+    transition: transform 0.5s ease-out; /* Animasi munculnya garis */
 }
 
 /* Saat di-hover */
@@ -119,30 +119,3 @@ section {
 }
 
 </style>
-<!-- 
-## 💡 Penjelasan Logika
-
-1.  **SplitText Initialization:**
-    ```javascript
-    const splitter = new SplitText(textElement, { type: "chars" });
-    allChars.push(...splitter.chars);
-    ```
-    Kode ini mengambil setiap elemen teks (`.line-text`), membaginya menjadi elemen `<span>` individual untuk setiap karakter, dan mengumpulkan semua karakter tersebut ke dalam array `allChars`.
-
-2.  **Initial State (`gsap.set`):**
-    ```javascript
-    gsap.set(allChars, { y: 10, opacity: 0, scale: 0.95 });
-    ```
-    Kita mengatur setiap karakter agar sedikit di bawah (`y: 10`), tidak terlihat (`opacity: 0`), dan sedikit lebih kecil (`scale: 0.95`). Properti `overflow: hidden` pada `.line-wrapper` menyembunyikan karakter yang ada di bawah *wrapper*.
-
-3.  **Animation (`tl.to`):**
-    ```javascript
-    stagger: 0.02,
-    ```
-    Nilai `stagger` yang sangat kecil (`0.02`) memastikan karakter muncul satu per satu dengan cepat, menciptakan efek *typewriter* atau *scanning* yang mulus dan cepat. Karena kita menargetkan `allChars`, efek *stagger* akan berjalan dari karakter pertama hingga karakter terakhir dari semua baris.
-
-4.  **Hide on Scroll Up:**
-    ```javascript
-    toggleActions: 'play none none reverse',
-    ```
-    Seperti pada solusi sebelumnya, properti ini memastikan bahwa ketika Anda *scroll* kembali ke atas melewati titik awal (`start: 'top 80%'`), animasi akan dimainkan **mundur** (reverse), membuat semua karakter kembali ke `opacity: 0` dan menghilang secara berurutan. -->

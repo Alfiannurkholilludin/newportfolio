@@ -1,4 +1,5 @@
 <template>
+  <main>
   <section class="w-full h-fit flex flex-col items-start p-20 relative overflow-x-hidden">
     <!-- Preloader -->
     <div ref="preloader" class="fixed top-0 left-0 w-full h-screen z-50 bg-[#0f0f0f] text-white flex items-center justify-center text-2xl font-semibold">
@@ -34,10 +35,13 @@
       <!-- <MarqueeBrand /> -->
     </div>
     <ScrollVelocity />
-    <WorkExperience />
-    <Footer1Page />
+    <!-- <MyService /> -->
+    <!-- <WorkExperience /> -->
     <!-- <ImageScrollDist /> -->
   </section>
+  <Footer1Page />
+  <ScrollButton />
+  </main>
 </template>
 
 <script setup>
@@ -58,6 +62,8 @@ import ScrollVelocity from '@/components/ScrollVelocity.vue'
 import ImageScrollDist from '@/components/ImageScrollDist.vue'
 import WorkExperience from '@/components/WorkExperience.vue'
 import Footer1Page from '@/components/Footer1Page.vue'
+import MyService from '@/components/ScrollButton.vue'
+import ScrollButton from '@/components/ScrollButton.vue'
 // import WorkProjects from '@/components/WorkProjects.vue'
 
 

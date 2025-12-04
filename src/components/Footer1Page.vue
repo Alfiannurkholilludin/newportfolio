@@ -8,6 +8,12 @@
                     <a href="" class="teks-hover text-2xl">Facebook <i class='bx-fw bx-arrow-up-right-stroke'></i></a>
                     <a href="" class="teks-hover text-2xl">Telegram <i class='bx-fw bx-arrow-up-right-stroke'></i></a>
                 </div>
+                <div class="flex flex-col gap-4 items-start w-full">
+                    <a href="/" class="teks-hover text-xl">Home</a>
+                    <a href="/about" class="teks-hover text-xl">About</a>
+                    <a href="/blog" class="teks-hover text-xl">Blog</a>
+                    <a href="/mywork" class="teks-hover text-xl">My Work</a>
+                </div>
             </div>
         </div>
         <div class="wrapper-text-c flex items-center justify-between pt-20 pb-20">

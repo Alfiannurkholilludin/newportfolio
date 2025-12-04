@@ -35,6 +35,7 @@
       <!-- <MarqueeBrand /> -->
     </div>
     <ScrollVelocity />
+    <PinCard />
     <!-- <MyService /> -->
     <!-- <WorkExperience /> -->
     <!-- <ImageScrollDist /> -->
@@ -64,6 +65,7 @@ import WorkExperience from '@/components/WorkExperience.vue'
 import Footer1Page from '@/components/Footer1Page.vue'
 import MyService from '@/components/ScrollButton.vue'
 import ScrollButton from '@/components/ScrollButton.vue'
+import PinCard from '@/components/PinCard.vue'
 // import WorkProjects from '@/components/WorkProjects.vue'
 
 

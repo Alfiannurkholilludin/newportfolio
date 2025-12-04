@@ -27,7 +27,7 @@ watch(isDark, (val) => {
 
 <template>
   <main>
-    <header class="flex absolute p-4 w-full place-content-center items-center fixed z-30">
+    <header class="flex p-4 w-full place-content-center items-center fixed z-30">
       <div class="wrapper w-full max-w-[769px] px-6 py-4 flex bg-[#bbbbbb76] dark:bg-[#222222aa] rounded-full items-center justify-between">
         <!-- Logo -->
         <a href="/"><img class="h-[32px] w-[32px]" src="@/assets/logo/logolight.png" alt="Logo Light" /></a>
@@ -70,7 +70,7 @@ watch(isDark, (val) => {
     </header>
 
     <!-- Mobile Nav Menu -->
-    <div v-if="isOpen" class="md:hidden absolute px-6 py-4 text-center w-full max-w-[640px] h-full mx-auto transition-all flex flex-col justify-start gap-12 fixed dark:bg-[#0f0f0f] z-30">
+    <div v-if="isOpen" class="md:hidden px-6 py-4 text-center w-full max-w-[640px] h-full mx-auto transition-all flex flex-col justify-start gap-12 fixed dark:bg-[#0f0f0f] z-30">
         <!-- Burger Button (Mobile only) -->
         <button class="md:hidden py-4 flex justify-end focus:outline-none" @click="isOpen = !isOpen">
           <svg v-if="!isOpen" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"

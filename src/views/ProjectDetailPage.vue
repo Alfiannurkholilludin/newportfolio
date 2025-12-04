@@ -45,6 +45,7 @@
       Kembali ke Daftar Proyek
     </button> -->
   </div>
+  <Footer1Page />
   <ScrollButton />
   </main>
 </template>

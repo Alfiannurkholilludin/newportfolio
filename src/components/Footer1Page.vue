@@ -89,6 +89,7 @@ onMounted(() => {
 .split {
     font-size: 20vw;
     font-family: "SFPRODISPLAYBOLD", sans-serif;
+    font-weight: 500;
     margin: 0;
     line-height: 0.8;
 }
@@ -113,7 +114,7 @@ onMounted(() => {
     height: 3px; /* Ketebalan garis */
     bottom: -5px; /* Jarak garis dari teks */
     left: 0;
-    background-color: #fff; /* Warna garis */
+    background-color: #D4d4d4; /* Warna garis */
     transform-origin: bottom right;
     transition: transform 0.5s ease-out; /* Animasi munculnya garis */
 }

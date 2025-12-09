@@ -6,6 +6,10 @@ import Navbar from '@/components/Navbar.vue'
 import { ref } from 'vue'
 import PageTransition from './components/PageTransition.vue'
 import StickyFooter from '@/components/StickyFooter.vue'
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const transitionOverlay = ref(null);
 

@@ -36,6 +36,8 @@
     </div>
     <ScrollVelocity />
     <PinCard />
+    <CursorFollowerImg />
+    <!-- <HorizontalScroll /> -->
     <!-- <MyService /> -->
     <!-- <WorkExperience /> -->
     <!-- <ImageScrollDist /> -->
@@ -66,6 +68,8 @@ import Footer1Page from '@/components/Footer1Page.vue'
 import MyService from '@/components/ScrollButton.vue'
 import ScrollButton from '@/components/ScrollButton.vue'
 import PinCard from '@/components/PinCard.vue'
+import CursorFollowerImg from '@/components/CursorFollowerImg.vue'
+import HorizontalScroll from '@/components/HorizontalScroll.vue'
 // import WorkProjects from '@/components/WorkProjects.vue'
 
 

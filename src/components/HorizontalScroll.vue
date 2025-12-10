@@ -216,37 +216,48 @@ let horizontalScrollTL = null; // Timeline untuk menyimpan animasi
 
 // --- Fungsi Animasi ---
 const setupHorizontalScroll = () => {
-    // Pastikan elemen DOM sudah ada
-    if (!scrollSection.value || !horizontalWrapper.value) return;
+    // Pengecekan Awal: Pastikan kedua elemen utama ada sebelum mencoba setup ScrollTrigger
+    if (!scrollSection.value || !horizontalWrapper.value) {
+        console.warn("Scroll section or wrapper not found. Skipping horizontal setup.");
+        return; // Hentikan fungsi jika elemen belum ada
+    }
 
-    // Hitung lebar yang harus digeser
-    // Lebar total horizontal wrapper
+    // Hitung lebar yang harus digeser (Kode ini sudah benar)
     const totalWidth = horizontalWrapper.value.scrollWidth;
-    // Lebar viewport
     const viewportWidth = window.innerWidth; 
-    // Target pergeseran (scrollWidth dikurangi viewportWidth)
     const endPosition = totalWidth - viewportWidth; 
     
     // 1. Buat Timeline
     horizontalScrollTL = gsap.timeline({
         scrollTrigger: {
             trigger: scrollSection.value,
-            // Mulai Pin/Animasi: Saat bagian atas trigger menyentuh atas viewport
             start: "top top",
-            // Akhir Animasi: Saat bagian bawah trigger menyentuh atas viewport (atau jarak tertentu)
-            // Di sini kita gunakan jarak scroll yang setara dengan 300vh - 100vh = 200vh
-            end: () => "+=" + (scrollSection.value.offsetHeight - window.innerHeight), 
-            pin: true, // PIN section agar tetap di tempat saat scrolling
-            scrub: 1, // Kaitkan scroll 1:1 dengan kemajuan timeline (gunakan 1 untuk sedikit smoothing)
-            // markers: true, // Hapus atau jadikan komentar setelah selesai debug
+            
+            // 🔥 PERBAIKAN DI SINI 🔥
+            end: () => {
+                // Tambahkan pengecekan null sebelum membaca properti DOM
+                const triggerElement = scrollSection.value;
+
+                if (triggerElement) {
+                    // Hitung jarak end (tinggi section dikurangi tinggi viewport)
+                    return "+=" + (triggerElement.offsetHeight - window.innerHeight); 
+                }
+                
+                // Nilai fallback yang aman jika elemen null (misalnya, default ke 300vh)
+                return "3000"; 
+            }, 
+
+            pin: true,
+            scrub: 1,
+            // Beri ID agar bisa di-kill dengan mudah saat unmount
+            id: "horizontal-scroll", 
         }
     });
 
-    // 2. Tambahkan animasi pergeseran ke timeline
-    // Geser horizontalWrapper sejauh 'endPosition'
+    // 2. Tambahkan animasi pergeseran
     horizontalScrollTL.to(horizontalWrapper.value, {
-        x: -endPosition, // Pindah ke kiri
-        ease: "none", // Tidak perlu ease agar pergeseran mulus dengan scroll
+        x: -endPosition,
+        ease: "none",
     });
 };
 

@@ -117,7 +117,7 @@ const revealEnter = async (el, done) => {
 }
 
 function initSmoothScroll() {
-    // Hentikan inisialisasi jika sudah ada 
+    // 1. Hentikan inisialisasi jika sudah ada 
     if (lenis) return; 
     
     // Inisialisasi Lenis
@@ -127,13 +127,13 @@ function initSmoothScroll() {
 
     ScrollTrigger.scrollerProxy(document.documentElement, {
         scrollTop(value) {
-            // ... kode scrollerProxy lainnya ...
+            // Pengecekan keamanan internal scrollerProxy (Opsional, tapi bagus)
+            if (!lenis) return window.scrollY; 
             return arguments.length
                 ? lenis.scrollTo(value)
                 : window.scrollY;
         },
         getBoundingClientRect() {
-            // ...
             return {
                 top: 0,
                 left: 0,
@@ -144,19 +144,21 @@ function initSmoothScroll() {
     });
 
     function raf(time) {
-        if (lenis) { // Pengecekan kritis 1: Pastikan lenis ada
+        if (lenis && typeof lenis.raf === 'function') { // Pengecekan fungsi raf
             lenis.raf(time); 
         }
         requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
 
-    // Pengecekan kritis 2: Pastikan lenis ada sebelum memanggil update
+    // 2. Pengecekan Kritis Paling Aman: Pastikan lenis dan metodenya ada
     ScrollTrigger.addEventListener("refresh", () => {
-        if (lenis) { 
+        if (lenis && typeof lenis.update === 'function') { 
             lenis.update();
         }
     });
+    
+    // Refresh Awal
     ScrollTrigger.refresh();
 }
 

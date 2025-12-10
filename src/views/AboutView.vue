@@ -37,7 +37,7 @@
     <ScrollVelocity />
     <PinCard />
     <CursorFollowerImg />
-    <!-- <HorizontalScroll /> -->
+    <HorizontalScroll />
     <!-- <MyService /> -->
     <!-- <WorkExperience /> -->
     <!-- <ImageScrollDist /> -->

@@ -1,7 +1,8 @@
 <template>
     <section ref="kontenerRef" class="content">
-        <div class="wrapper-text-split h-[40vh]">
+        <div class="wrapper-text-split h-[20vh] flex flex-col justify-center items-center">
             <h1 class="splittext">My Client</h1>
+            <p class="text-[#a9a9a9]">Move your mouse to see my clients</p>
         </div>
         <img class="flair" src="../assets/brand/balifiber.png" alt="">
         <img class="flair" src="../assets/brand/motekar.png" alt="">
@@ -26,12 +27,12 @@
     }
     .content {
         width: 100%;
-        height: 50vh;
+        height: 80vh;
         display: flex;
         /* background-color: aqua; */
         justify-content: center;
         align-items: center;
-        min-height: 50vh;
+        min-height: 80vh;
         overflow: hidden;
     }
 

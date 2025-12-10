@@ -113,7 +113,7 @@ const revealEnter = async (el, done) => {
     if (!isMobile.value && !scrollLockActive) {
         initSmoothScroll()
     }
-    done()
+    // done()
 }
 
 function initSmoothScroll() {

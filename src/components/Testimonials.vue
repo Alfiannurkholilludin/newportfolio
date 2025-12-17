@@ -1,6 +1,7 @@
 <template>
   <div class="testimonial-section">
     <h2 class="testimonial-title">One love for 1UP</h2>
+    <p class="testimonial-description">Trusted by startups, creatives, and growing brands. my work speaks through the people we’ve built it with.</p>
     <div class="card-stack-container">
       <div 
         v-for="(testimonial, index) in testimonials" 
@@ -124,6 +125,16 @@ export default {
     font-family: 'SFPRODISPLAYBOLD', sans-serif;
     font-weight: 600;
     /* color: #0f0f0f; */
+}
+
+.testimonial-description {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    color: #747474;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .card-stack-container {

@@ -20,7 +20,7 @@
         <p class="title-overview text-[18px] w-[800px] leading-8">{{ currentProject.titleoverview }}</p>
         <p class="text-[18px] w-[800px] leading-8">{{ currentProject.overview }}</p>
         <p class="title-goals text-[18px] w-[800px] leading-8">{{ currentProject.titleGoals }}</p>
-        <p class="text-[18px] w-[800px] leading-8">{{ currentProject.goals }}</p>
+        <p class="text-[18px] w-[800px] leading-8 whitespace-pre-line">{{ currentProject.goals }}</p>
       </div>
     </div>
 
@@ -77,12 +77,12 @@ const ALL_PROJECTS = [
         titleoverview: "Overview",
         overview: "Balifiber is a data communication service and television channel based on the latest technology for residential and corporate customers with 100% fiber optics. This service is provided by PT Bali Towerindo Sentra Tbk or commonly known as Bali Tower.",
         titleGoals: "Goals",
-        goals: "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        goals: "Startplan aims to: \n- Creating a responsive and user-friendly website for Balifiber customers. \n- Integrating an efficient customer management system. \n- Improving Balifiber's online visibility and branding through attractive web design. \n- Providing interactive features such as live chat and online customer support. \n- Optimizing the website for SEO to improve search engine rankings. \n- Provide easy access to Balifiber product and service information for potential customers. \n- Improve user experience with intuitive navigation and attractive design. \n- Ensure website compatibility across various devices, including desktops, tablets, and smartphones. \n- Provide secure and easy-to-use online payment features for customers.",
         imgbali1: imgbali1,
         imgbali2: imgbali2,
         problem: "Problem",
         titlechallenge: "The Challenge",
-        overviewchallenge: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        overviewchallenge: "The main challenge in this project was to develop a website that was not only visually appealing but also functional and easy to use for various types of users. In addition, the integration of an efficient customer management system was a priority to ensure optimal service for Balifiber customers.",
     },
     {
         title: "SmartCart By ITC", 

@@ -29,7 +29,7 @@
 <style scoped>
 /* Container Pemicu Scroll Vertikal */
 .scroll-container {
-    height: 400vh; /* Contoh: Memberikan ruang scroll 3x viewport */
+    height: 300vh; /* Contoh: Memberikan ruang scroll 3x viewport */
     /* background-color: #000; */
 }
 
@@ -42,6 +42,10 @@
     /* Tinggi 100vh agar wrapper mengisi layar penuh */
     height: 100vh;
     padding: 0 5vw; /* Padding agar panel tidak terlalu mepet */
+
+    /* 🔥 PERBAIKAN: Pastikan tidak ada scrollbar di dalam wrapper ini */
+    overflow-x: hidden; /* Tambahkan ini */
+    overflow-y: hidden; /* Tambahkan ini */
 }
 
 /* Setiap Panel Konten */
@@ -66,9 +70,11 @@
 }
 
 .job-title {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 5px;
+    font-family: "SFPRODISPLAYBOLD", sans-serif;
+    font-weight: 700;
 }
 
 .job-meta {

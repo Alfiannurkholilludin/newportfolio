@@ -45,26 +45,43 @@ import DigitalClock from './DigitalClock.vue';
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 onMounted(() => {
-  const mySplitText = new SplitText(".split", { type: "chars" });
-  const chars = mySplitText.chars; // Array dari elemen karakter
+    // 1. Tunda eksekusi sampai semua font siap
+    document.fonts.ready.then(() => {
+        
+        // --- LOGIKA SPLITTEXT & ANIMASI DIPINDAHKAN KE DALAM SINI ---
+        
+        const mySplitText = new SplitText(".split", { type: "chars" });
+        const chars = mySplitText.chars; // Array dari elemen karakter
 
-  gsap.from(chars, {
-    yPercent: 100,
-    stagger: {
-        each: 0.08,
-        from: "center"
-    },
-    ease: "power2.out",
-    duration: 2,
-    scrollTrigger: {
-      trigger: ".split",
-      start: "top 100%",
-        end: "bottom 50%",
-      toggleActions: 'play none none reverse',
-      markers: false,
-      scrub: 0.5,
-    },
-  });
+        gsap.from(chars, {
+            yPercent: 100,
+            stagger: {
+                each: 0.08,
+                from: "center"
+            },
+            ease: "power2.out",
+            duration: 2,
+            scrollTrigger: {
+                trigger: ".split",
+                start: "top 100%",
+                end: "bottom 50%",
+                toggleActions: 'play none none reverse',
+                markers: false,
+                scrub: 0.5,
+            },
+        });
+        
+        // PENTING: Panggil ScrollTrigger.refresh() untuk memastikan trigger dihitung ulang
+        // karena dimensi elemen mungkin baru berubah setelah font dimuat.
+        ScrollTrigger.refresh(); 
+    }).catch(err => {
+        // Penanganan error jika font gagal dimuat
+        console.error("Error loading fonts before SplitText:", err);
+        
+        // Opsional: Jalankan SplitText tanpa menunggu font jika terjadi error
+        // Ini memastikan animasi tetap berjalan meskipun tampilannya mungkin berkedip.
+        // runSplitTextAnimation(); 
+    });
 });
 
 </script>

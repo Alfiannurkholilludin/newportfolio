@@ -38,6 +38,7 @@
     <PinCard />
     <CursorFollowerImg />
     <HorizontalScroll />
+    <Testimonials />
     <!-- <MyService /> -->
     <!-- <WorkExperience /> -->
     <!-- <ImageScrollDist /> -->
@@ -70,6 +71,7 @@ import ScrollButton from '@/components/ScrollButton.vue'
 import PinCard from '@/components/PinCard.vue'
 import CursorFollowerImg from '@/components/CursorFollowerImg.vue'
 import HorizontalScroll from '@/components/HorizontalScroll.vue'
+import Testimonials from '@/components/Testimonials.vue'
 // import WorkProjects from '@/components/WorkProjects.vue'
 
 
@@ -124,6 +126,12 @@ onMounted(() => {
 </script>
 
 <style>
+
+  .weatherwidget-io {
+    margin-top: 20px;
+    border-radius: 5px;
+    width: 100%;
+  }
 .swiper-button-next::after {
   content: '→';
   color: #fff;

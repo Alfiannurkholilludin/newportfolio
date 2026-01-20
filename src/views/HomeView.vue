@@ -198,7 +198,7 @@ import ScrollButton from '@/components/ScrollButton.vue'
 <style scoped>
 
   canvas {
-    display: block;
+    display: relative;
     pointer-events: none; /* Agar mouse events tidak mengganggu interaksi */
   }
 

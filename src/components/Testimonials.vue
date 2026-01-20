@@ -31,7 +31,7 @@ export default {
       testimonials: [
         { 
           name: 'Arrio Saputra', 
-          company: 'Fullstack Developer at PT Bali Towerindo Sentra Tbk', 
+          company: 'Backend Developer at PT Bali Towerindo Sentra Tbk', 
           quote: 'I strongly endorse Alfian Nur Kholilludin as a UI/UX Designer for website design projects on Linkedin. His exceptional design skills, meticulous attention to detail and user-focused approach have consistently.' 
         },
         { 

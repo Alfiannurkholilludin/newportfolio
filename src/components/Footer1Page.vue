@@ -67,7 +67,7 @@ onMounted(() => {
                 end: "bottom 50%",
                 toggleActions: 'play none none reverse',
                 markers: false,
-                scrub: 0.5,
+                scrub: 1,
             },
         });
         

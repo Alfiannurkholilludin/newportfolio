@@ -86,7 +86,9 @@ const ALL_PROJECTS = [
     },
     {
         title: "SmartCart By ITC", 
-        slug: "PT International Test Center", 
+        slug: "PT International Test Center",
+        imgbali1: imgbali1,
+        imgbali2: imgbali2,
         image: img2, 
         description: "Detail lengkap tentang proyek SmartCart dan tantangan yang dihadapi.",
         tentang: "solusi inovatif untuk meningkatkan pengalaman berbelanja pelanggan melalui teknologi canggih."

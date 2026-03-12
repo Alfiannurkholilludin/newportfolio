@@ -1,170 +1,338 @@
 <template>
   <main>
-  <div class="project-detail-page p-8">
-    <img :src="currentProject.image" :alt="currentProject.title" class="w-full h-[800px] object-cover mb-16 rounded-lg shadow-lg"/>
-    <!-- <p>{{ currentProject.description }}</p> -->
+    <div class="project-detail-page p-8">
 
-    <div class="wrapper-text-title w-full flex items-start justify-between pt-8">
-      <div class="flex flex-col gap-4">
-        <h1 class="text-6xl font-bold pt-8">{{ currentProject.title }}</h1>
-        <p class="text-xl text-gray-500 mb-8">{{ projectSlug }}</p>
-      </div>
-      <div class="text-title">
-        <h1 class="text-6xl/18 w-[800px] pt- leading-">{{currentProject.tentang}}</h1>
-      </div>
-    </div>
+      <!-- HERO IMAGE -->
+      <img
+        v-if="project.image"
+        :src="project.image"
+        :alt="project.title"
+        class="w-full h-[800px] object-cover mb-16 rounded-lg shadow-lg"
+      />
 
-    <div class="wrapper-overview flex justify-between pt-16 pb-16">
-      <h2 class="text-[22px]">{{ currentProject.context }}</h2>
-      <div class="overview-text">
-        <p class="title-overview text-[18px] w-[800px] leading-8">{{ currentProject.titleoverview }}</p>
-        <p class="text-[18px] w-[800px] leading-8">{{ currentProject.overview }}</p>
-        <p class="title-goals text-[18px] w-[800px] leading-8">{{ currentProject.titleGoals }}</p>
-        <p class="text-[18px] w-[800px] leading-8 whitespace-pre-line">{{ currentProject.goals }}</p>
-      </div>
-    </div>
+      <!-- TITLE SECTION -->
+      <section class="flex justify-between items-start pt-8 gap-10">
 
-    <div class="wrapper-img1 flex gap-8">
-      <img :src="currentProject.imgbali1" alt="" class="w-[794px] h-auto">
-      <img :src="currentProject.imgbali2" alt="" class="w-[341px] h-[255px]">
-    </div>
+        <div class="flex flex-col gap-4">
+          <h1 class="text-6xl font-bold">
+            {{ project.title }}
+          </h1>
 
-    <div class="wrapper-img2 pt-8">
-      <img :src="currentProject.image" alt="" class="w-full h-auto">
-    </div>
+          <p class="text-xl text-gray-500">
+            {{ project.slug }}
+          </p>
+        </div>
 
-    <div class="wrapper-overview flex justify-between pt-16 pb-16">
-      <h2 class="text-[22px]">{{ currentProject.problem }}</h2>
-      <div class="overview-text">
-        <p class="title-overview text-[18px] w-[800px] leading-8">{{ currentProject.titlechallenge }}</p>
-        <p class="text-[18px] w-[800px] leading-8">{{ currentProject.overviewchallenge }}</p>
-      </div>
+        <div v-if="project.tentang" class="max-w-[800px]">
+          <h2 class="text-5xl leading-tight">
+            {{ project.tentang }}
+          </h2>
+        </div>
+
+      </section>
+
+
+      <!-- OVERVIEW -->
+      <section
+        v-if="project.overview"
+        class="flex justify-between pt-20 pb-16 gap-10"
+      >
+
+        <h2 class="text-[22px] font-semibold">
+          {{ project.context }}
+        </h2>
+
+        <div class="max-w-[800px] text-[18px] leading-8 space-y-4">
+
+          <p v-if="project.titleoverview" class="title-overview">
+            {{ project.titleoverview }}
+          </p>
+
+          <p>
+            {{ project.overview }}
+          </p>
+
+          <a
+            v-if="project.ctalink"
+            :href="project.ctalink"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block mt-6 font-semibold py-3 text-white rounded-lg hover:underline transition"
+          >
+            Visit Website
+          </a>
+
+          <p v-if="project.titleGoals" class="title-goals">
+            {{ project.titleGoals }}
+          </p>
+
+          <p v-if="project.goals" class="whitespace-pre-line">
+            {{ project.goals }}
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- IMAGE GALLERY -->
+      <section
+        v-if="project.imgbali1 || project.imgbali2 || project.imgbali3"
+        class="flex gap-8"
+      >
+
+        <img
+          v-if="project.imgbali1"
+          :src="project.imgbali1"
+          class="w-[794px] h-auto"
+        />
+
+        <img
+          v-if="project.imgbali2"
+          :src="project.imgbali2"
+          class="w-[341px] h-[255px]"
+        />
+
+        <img
+          v-if="project.imgbali3"
+          :src="project.imgbali3"
+          class="w-[341px] h-[255px]"
+        />
+
+      </section>
+
+
+      <!-- FULL IMAGE -->
+      <section v-if="project.fimage || project.fimage2" class="pt-8 flex gap-8 w-full">
+        <img
+          :src="project.fimage"
+          class="w-[710px] h-auto object-cover object-center"
+        />
+        <img
+          :src="project.fimage2"
+          class="w-[710px] h-auto mt-8"
+        />
+      </section>
+
+
+      <!-- CHALLENGE -->
+      <section
+        v-if="project.problem"
+        class="flex justify-between pt-20 pb-16 gap-10"
+      >
+        <h2 class="text-[22px] font-semibold">
+          {{ project.problem }}
+        </h2>
+
+        <div class="max-w-[800px] text-[18px] leading-8 space-y-4">
+
+          <p v-if="project.titlechallenge" class="title-overview">
+            {{ project.titlechallenge }}
+          </p>
+
+          <p v-if="project.overviewchallenge">
+            {{ project.overviewchallenge }}
+          </p>
+
+        </div>
+      </section>
+
+      <!-- Results -->
+
+      <section v-if="project.results" class="flex justify-between pt-20 pb-16 gap-10">
+        <h2 class="text-[22px] font-semibold">
+          Results
+        </h2>
+
+        <div class="max-w-[800px] text-[18px] leading-8 space-y-4">
+
+          <p v-if="project.titleresults" class="title-overview">
+            {{ project.titleresults }}
+          </p>
+
+          <p v-if="project.results">
+            {{ project.results }}
+          </p>
+
+        </div>
+
+      </section>
+    <Testimonials />
     </div>
-    
-    <!-- <button @click="$router.push('/')" class="mt-10 bg-blue-500 text-white p-3 rounded">
-      Kembali ke Daftar Proyek
-    </button> -->
-  </div>
-  <Footer1Page />
-  <ScrollButton />
+    <Footer1Page />
+    <ScrollButton />
+
   </main>
 </template>
 
-<script>
-import { ref, watch, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
+<script setup>
 
-import img1 from "../assets/project/1.png";
-import img2 from "../assets/project/2.png";
-import img3 from "../assets/project/3.png";
-import imgbali1 from "../assets/project/bali1.png";
-import imgbali2 from "../assets/project/balifiber.png";
-import Footer1Page from '@/components/Footer1Page.vue';
-// import ScrollButton from '@/components/ScrollButton.vue';
-import ScrollButton from '@/components/ScrollButton.vue'
-// import ScrollButton from '@/components/ScrollButton.vue';
+import { ref, onMounted, watch } from "vue"
+import { useRoute } from "vue-router"
 
-// Impor semua data proyek Anda (Anda mungkin ingin memindahkannya ke file data terpisah)
+import Footer1Page from "@/components/Footer1Page.vue"
+import ScrollButton from "@/components/ScrollButton.vue"
+
+import img1 from "@/assets/project/1.png"
+import img2 from "@/assets/project/2.png"
+import img3 from "@/assets/project/3.png"
+import img4 from "@/assets/project/allpagebalifiber.jpg"
+import img5 from "@/assets/project/regisbalifiber.png"
+
+import imgbali1 from "@/assets/project/bali1.png"
+import imgbali2 from "@/assets/project/balifiber.png"
+import imgbali3 from "@/assets/project/keripik.png"
+
+import imgpromptai from "@/assets/project/work4.png"
+import Testimonials from "@/components/Testimonials.vue"
+
+const route = useRoute()
+
+const project = ref({})
+
+/*
+PROJECT DATA
+*/
 const ALL_PROJECTS = [
-    {   
-        title: "Balifiber", 
-        slug: "PT Bali Towerindo Sentra Tbk",
-        // timeline: "", 
-        image: img1, 
-        description: "Detail lengkap tentang proyek Balifiber dan teknologi yang digunakan.",
-        tentang: "high-speed networks to support data needs in the digital age.",
-        context: "Context",
-        titleoverview: "Overview",
-        overview: "Balifiber is a data communication service and television channel based on the latest technology for residential and corporate customers with 100% fiber optics. This service is provided by PT Bali Towerindo Sentra Tbk or commonly known as Bali Tower.",
-        titleGoals: "Goals",
-        goals: "Startplan aims to: \n- Creating a responsive and user-friendly website for Balifiber customers. \n- Integrating an efficient customer management system. \n- Improving Balifiber's online visibility and branding through attractive web design. \n- Providing interactive features such as live chat and online customer support. \n- Optimizing the website for SEO to improve search engine rankings. \n- Provide easy access to Balifiber product and service information for potential customers. \n- Improve user experience with intuitive navigation and attractive design. \n- Ensure website compatibility across various devices, including desktops, tablets, and smartphones. \n- Provide secure and easy-to-use online payment features for customers.",
-        imgbali1: imgbali1,
-        imgbali2: imgbali2,
-        problem: "Problem",
-        titlechallenge: "The Challenge",
-        overviewchallenge: "The main challenge in this project was to develop a website that was not only visually appealing but also functional and easy to use for various types of users. In addition, the integration of an efficient customer management system was a priority to ensure optimal service for Balifiber customers.",
-    },
-    {
-        title: "SmartCart By ITC", 
-        slug: "PT International Test Center",
-        imgbali1: imgbali1,
-        imgbali2: imgbali2,
-        image: img2, 
-        description: "Detail lengkap tentang proyek SmartCart dan tantangan yang dihadapi.",
-        tentang: "solusi inovatif untuk meningkatkan pengalaman berbelanja pelanggan melalui teknologi canggih."
-    },
-    { 
-        title: "Motekar Studio", 
-        slug: "Motekar Studio", 
-        image: img3, 
-        description: "Detail lengkap tentang proyek Motekar Studio dan hasil akhirnya.",
-        tentang: "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    },
 
-    // ... Tambahkan detail untuk semua proyek
-];
+{
+title:"Balifiber",
+slug:"balifiber",
 
-export default {
-  components: {
-    ScrollButton,
-    Footer1Page
-  },
+image:img1,
 
-  name: 'ProjectDetail',
-  // Jika props: true disetel di router.js, slug akan tersedia sebagai prop
-  props: {
-    slug: {
-        type: String,
-        required: true
-    }
-  },
-  setup(props) {
-    const route = useRoute();
-    const currentProject = ref({});
-    const projectSlug = ref(props.slug); // Ambil slug dari props
+tentang:"High-speed networks to support data needs in the digital age.",
 
-    const fetchProjectData = (slug) => {
-      // Cari data proyek berdasarkan slug yang diterima
-      const data = ALL_PROJECTS.find(p => p.slug === slug);
-      
-      if (data) {
-        currentProject.value = data;
-      } else {
-        // Handle case jika proyek tidak ditemukan (misalnya, redirect ke 404)
-        currentProject.value = { title: "Proyek Tidak Ditemukan", description: "Maaf, proyek yang Anda cari tidak ada.", image: '' };
-      }
-    };
+context:"Context",
 
-    // 1. Muat data saat komponen pertama kali dipasang
-    onMounted(() => {
-      fetchProjectData(projectSlug.value);
-    });
+titleoverview:"Overview",
 
-    // 2. Jika Anda memuat komponen yang sama dengan mengganti rute dinamis (misalnya, dari /project/A ke /project/B)
-    // Gunakan 'watch' untuk memuat ulang data saat prop 'slug' berubah.
-    watch(() => props.slug, (newSlug) => {
-        projectSlug.value = newSlug;
-        fetchProjectData(newSlug);
-    });
+overview:"Balifiber is a data communication service and television channel based on the latest technology with 100% fiber optics.",
 
-    return {
-      currentProject,
-      projectSlug
-    };
-  }
+ctalink: "https://www.balifiber.id/",
+
+titleGoals:"The Goals",
+
+goals: `Startplan aims to:
+- Creating a responsive website
+- Integrating customer management
+- Improving online visibility
+- Providing customer support features
+- Optimizing SEO`,
+
+imgbali1,
+imgbali2,
+
+problem:"Problem",
+
+fimage:img4,
+fimage2:img5,
+
+titlechallenge:"The Challenge",
+
+overviewchallenge:"The main challenge was building a visually appealing yet functional website that remains easy to use.",
+
+titleresults:"The Results",
+
+results:"The new website successfully increased user engagement and improved the overall online presence of Balifiber, leading to a significant boost in customer inquiries and satisfaction."
+},
+
+{
+title:"SmartCart By ITC",
+slug:"smartcart",
+
+image:img2,
+tentang:"Revolutionizing retail with smart shopping carts for a seamless experience.",
+context:"Context",
+
+titleoverview:"Overview",
+
+overview:"SmartCart is a smart shopping cart system designed to enhance the retail shopping experience by providing features such as real-time product information, navigation assistance, and seamless checkout.",
+
+ctalink: "https://smartcart.id/",
+
+titleGoals:"Goals",
+
+goals:`- Develop a user-friendly interface for the smart shopping cart system
+- Integrate real-time product information and navigation assistance
+- Implement a seamless checkout process
+- Enhance the overall shopping experience for customers`,
+
+imgbali3,
+
+problem:"Problem",
+
+fimage2:img5,
+
+titlechallenge:"The Challenge",
+
+overviewchallenge:"The main challenge was building a visually appealing yet functional website that remains easy to use.",
+
+titleresults:"The Results",
+
+results:"The new website successfully increased user engagement and improved the overall online presence of Balifiber, leading to a significant boost in customer inquiries and satisfaction."
+
+},
+
+{
+title:"Motekar Studio",
+slug:"motekar",
+image:img3,
+
+tentang:"Creative studio focused on modern digital experiences."
 }
+
+]
+
+
+/*
+FETCH PROJECT
+*/
+const fetchProject = (slug) => {
+
+const found = ALL_PROJECTS.find(p => p.slug === slug)
+
+project.value = found ?? {
+title:"Project Not Found",
+overview:"The requested project does not exist."
+}
+
+}
+
+
+/*
+INITIAL LOAD
+*/
+onMounted(() => {
+fetchProject(route.params.slug)
+})
+
+
+/*
+WATCH ROUTE CHANGE
+*/
+watch(
+() => route.params.slug,
+(newSlug)=>{
+fetchProject(newSlug)
+}
+)
+
 </script>
 
-<style>
-  .title-overview {
-    margin-bottom: 8px;
-    font-family: "SFPRODISPLAYBOLD", sans-serif;
-    font-weight: bold;
-  }
-  .title-goals {
-    margin-top: 24px;
-    margin-bottom: 8px;
-    font-family: "SFPRODISPLAYBOLD", sans-serif;
-    font-weight: bold;
-  }
+<style scoped>
+
+.title-overview{
+font-weight:bold;
+margin-bottom:8px;
+font-family:"SFPRODISPLAYBOLD",sans-serif;
+}
+
+.title-goals{
+font-weight:bold;
+margin-top:24px;
+margin-bottom:8px;
+font-family:"SFPRODISPLAYBOLD",sans-serif;
+}
+
 </style>

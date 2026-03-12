@@ -24,15 +24,17 @@ import { useRouter } from 'vue-router';
 import img1 from "@/assets/project/1.png"
 import img2 from "@/assets/project/2.png"
 import img3 from "@/assets/project/3.png"
+import imgpromptai from "@/assets/project/work4.png"
 
 export default {
   name: "ProjectGalleryHoverSmoothBetter",
   setup() {
     const router = useRouter();
     const projects = ref([
-      { title: "Balifiber", image: img1, slug: "PT Bali Towerindo Sentra Tbk" },
-      { title: "SmartCart By ITC", image: img2, slug: "PT International Test Center" },
-      { title: "Motekar Studio", image: img3, slug: "Motekar Studio" },
+      { title: "Balifiber", image: img1, slug: "balifiber" },
+      // { title: "Balifiber Business", image: imgpromptai, slug: "balifiber-business" },
+      { title: "SmartCart By ITC", image: img2, slug: "smartcart" },
+      { title: "Motekar Studio", image: img3, slug: "motekar" },
     ]);
 
     const wrapperRefs = ref([]);

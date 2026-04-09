@@ -21,7 +21,7 @@ import { ref, onBeforeUnmount } from "vue";
 import gsap from "gsap";
 import { useRouter } from 'vue-router';
 
-import img1 from "@/assets/project/1.png"
+import img1 from "@/assets/project/balifibermock.png"
 import img2 from "@/assets/project/2.png"
 import img3 from "@/assets/project/3.png"
 import imgpromptai from "@/assets/project/work4.png"

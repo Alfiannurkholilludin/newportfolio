@@ -81,7 +81,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="relative overflow-hidden py-32 h-[250vh] md:h-[350vh] lg:h-[450vh]">
+  <section class="relative overflow-hidden py-32 h-[238vh] md:h-[350vh] lg:h-[450vh]">
     <div class="mx-auto px-6 max-w-7xl">
       <div class="relative space-y-0">
         <article v-for="(project, index) in projects" :key="project.id" :style="{ top: `${index * 40 + 80}px` }"

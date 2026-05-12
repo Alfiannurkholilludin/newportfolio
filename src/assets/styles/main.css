@@ -1,0 +1,34 @@
+@import "tailwindcss";
+@import "./variables.css";
+@import './fonts.css';
+
+body {
+    background-color: var(--background);
+    color: var(--primary-color);
+    font-family: var(--font-aspekta);
+}
+
+@theme {
+    --font-aspekta: 'Aspekta', sans-serif;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}

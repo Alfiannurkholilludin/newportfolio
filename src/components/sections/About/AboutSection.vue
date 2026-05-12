@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import TechStack from '@/components/sections/TechStack.vue'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -116,6 +117,7 @@ onMounted(() => {
 
             </div>
         </div>
+        <TechStack />
 
         <!-- GRADIENT -->
         <div

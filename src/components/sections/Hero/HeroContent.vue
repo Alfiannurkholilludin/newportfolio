@@ -1,4 +1,5 @@
 <script setup>
+import MagneticButton from '@/components/common/MagneticButton.vue'
 </script>
 
 <template>
@@ -13,10 +14,9 @@
         </p>
 
         <div class="flex sm:flex-row flex-col justify-center gap-4 sm:gap-6 mt-8 sm:mt-10">
-            <a href="#projects"
-                class="px-6 py-3 border border-[#383838] pointer-events-auto text-[#f5f5f5] rounded-full hover:bg-[#2F2FE4] hover:text-[#f5f5f5] transition-colors duration-300">
+            <MagneticButton>
                 See my work
-            </a>
+            </MagneticButton>
         </div>
     </div>
 </template>

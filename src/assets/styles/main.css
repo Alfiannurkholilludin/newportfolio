@@ -2,6 +2,15 @@
 @import "./variables.css";
 @import './fonts.css';
 
+* {
+  cursor: none;
+}
+
+a,
+button {
+  cursor: none;
+}
+
 body {
     background-color: var(--background);
     color: var(--primary-color);

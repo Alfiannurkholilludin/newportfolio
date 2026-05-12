@@ -24,11 +24,11 @@ const marqueeItems = [...stacks, ...stacks]
   <section class="relative overflow-hidden py-28 md:py-40">
 
     <!-- TOP GRADIENT -->
-    <div
+    <!-- <div
       class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.05),transparent_55%)]"
-    />
+    /> -->
 
-    <div class="mb-16 text-center">
+    <!-- <div class="mb-16 text-center">
       <p
         class="mb-5 text-sm uppercase tracking-[0.35em] text-white/40"
       >
@@ -40,7 +40,7 @@ const marqueeItems = [...stacks, ...stacks]
       >
         Technologies & Creative Tools
       </h2>
-    </div>
+    </div> -->
 
     <!-- MARQUEE -->
     <div class="relative">

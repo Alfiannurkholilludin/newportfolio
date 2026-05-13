@@ -2,6 +2,7 @@
 import { onMounted, onUnmounted } from 'vue'
 import { useLenis } from '@/composables/useLenis'
 import CursorFollower from '@/components/common/CursorFollower.vue'
+import LoaderIntro from '@/components/loader/LoaderIntro.vue'
 
 const { initLenis, destroyLenis } = useLenis()
 
@@ -15,8 +16,9 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="bg-[#0A0A0A] min-h-screen text-white overflow-x-hidden">
+  <div class="min-h-screen text-white overflow-x-hidden">
     <CursorFollower />
+    <LoaderIntro />
 
     <router-view />
   </div>

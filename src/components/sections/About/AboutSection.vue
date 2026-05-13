@@ -52,7 +52,7 @@ onMounted(() => {
                 <div>
 
                     <p class="about-label mb-8 text-sm uppercase tracking-[0.35em] text-white/40">
-                        About Me
+                        Little Story About Me
                     </p>
 
                     <div class="space-y-2">

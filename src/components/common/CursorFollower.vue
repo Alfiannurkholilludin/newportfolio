@@ -83,7 +83,7 @@ onUnmounted(() => {
 <template>
   <div
     ref="cursorRef"
-    class="top-0 left-0 z-[9999] fixed bg-white mix-blend-difference rounded-full pointer-events-none"
+    class="custom-cursor top-0 left-0 z-[9999] fixed bg-white mix-blend-difference rounded-full pointer-events-none"
     style="
       width: 18px;
       height: 18px;
@@ -92,3 +92,11 @@ onUnmounted(() => {
     "
   />
 </template>
+
+<style>
+@media (pointer: coarse) {
+  .custom-cursor {
+    display: none !important;
+  }
+}
+</style>

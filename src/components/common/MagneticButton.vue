@@ -4,7 +4,11 @@ import gsap from 'gsap'
 
 const magneticRef = ref(null)
 
+const isMobile = window.innerWidth < 768
+
 const handleMouseMove = (e) => {
+  if (isMobile) return
+
   const el = magneticRef.value
 
   if (!el) return
@@ -29,6 +33,8 @@ const handleMouseMove = (e) => {
 }
 
 const handleMouseLeave = () => {
+  if (isMobile) return
+
   const el = magneticRef.value
 
   if (!el) return
@@ -47,12 +53,12 @@ const handleMouseLeave = () => {
     ref="magneticRef"
     @mousemove="handleMouseMove"
     @mouseleave="handleMouseLeave"
-    class="group relative inline-flex items-center gap-3 border border-white/10 bg-white/5 hover:bg-[#2F2FE4] backdrop-blur-xl px-6 py-4 rounded-full overflow-hidden text-white transition-colors duration-500"
+    class="group relative inline-flex items-center justify-center gap-3 border border-white/10 bg-white/5 hover:bg-[#2F2FE4] backdrop-blur-xl px-5 sm:px-6 py-3 sm:py-4 rounded-full overflow-hidden font-medium text-sm sm:text-base text-white transition-all duration-500"
   >
     <slot />
 
     <span
-      class="flex justify-center items-center bg-white rounded-full w-8 h-8 text-black transition-transform duration-300 group-hover:translate-x-1"
+      class="flex justify-center items-center bg-white rounded-full w-7 sm:w-8 h-7 sm:h-8 text-black transition-transform duration-300 group-hover:translate-x-1 shrink-0"
     >
       →
     </span>
@@ -64,5 +70,18 @@ button {
   will-change: transform;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 375px) {
+  button {
+    width: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  button {
+    width: auto;
+  }
 }
 </style>

@@ -43,7 +43,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <section ref="section" class="relative z-10 overflow-hidden pt-40 pb-32 md:pt-52 md:pb-40">
+    <section ref="section" class="relative z-10 overflow-hidden pt-52 pb-32 md:pt-52 md:pb-40">
         <div class="mx-auto max-w-7xl px-6">
 
             <div class="grid items-start gap-20 lg:grid-cols-2">
@@ -120,7 +120,7 @@ onMounted(() => {
         <TechStack />
 
         <!-- GRADIENT -->
-        <div
-            class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.06),transparent_50%)]" />
+        <!-- <div
+            class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.06),transparent_50%)]" /> -->
     </section>
 </template>

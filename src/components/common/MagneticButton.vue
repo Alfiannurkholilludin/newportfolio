@@ -71,9 +71,10 @@ button {
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   -webkit-tap-highlight-color: transparent;
+  pointer-events: auto;
 }
 
-@media (max-width: 375px) {
+@media (min-width: 640px) {
   button {
     width: auto;
   }

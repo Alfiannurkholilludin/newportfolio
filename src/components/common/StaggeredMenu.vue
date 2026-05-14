@@ -142,6 +142,7 @@
 import defaultLogo from '@/assets/images/logo/logolight.png';
 import { gsap } from 'gsap';
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, useTemplateRef, watch } from 'vue';
+import { useRoute } from 'vue-router';
 
 export interface StaggeredMenuItem {
   label: string;
@@ -185,6 +186,7 @@ const props = withDefaults(defineProps<StaggeredMenuProps>(), {
 
 const open = ref(false);
 const openRef = ref(false);
+const route = useRoute();
 
 const panelRef = useTemplateRef('panelRef');
 const preLayersRef = useTemplateRef('preLayersRef');
@@ -499,14 +501,17 @@ watch(
 );
 
 watch(
-  () => [props.menuButtonColor, props.position],
+  () => route.fullPath,
   () => {
-    nextTick(() => {
-      if (gsapContext) {
-        gsapContext.revert();
-      }
-      initializeGSAP();
-    });
+    if (!openRef.value) return;
+
+    open.value = false;
+    openRef.value = false;
+
+    playClose();
+    animateIcon(false);
+    animateColor(false);
+    animateText(false);
   }
 );
 

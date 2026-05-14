@@ -3,34 +3,11 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
+import { projects } from '@/data/projects'
+import { RouterLink } from 'vue-router'
+
 gsap.registerPlugin(ScrollTrigger)
 
-const projects = [
-  {
-    id: 1,
-    title: 'Balifiber',
-    category: 'UI/UX Design',
-    year: '2026',
-    image:
-      'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop'
-  },
-  {
-    id: 2,
-    title: 'Motekar Studio',
-    category: 'UI/UX Design, Freelance Project',
-    year: '2026',
-    image:
-      'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop'
-  },
-  {
-    id: 3,
-    title: 'SmartCart By ITC',
-    category: 'UI/UX Design, Freelance Project',
-    year: '2025',
-    image:
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1600&auto=format&fit=crop'
-  },
-]
 
 const cards = ref([])
 
@@ -84,9 +61,9 @@ onUnmounted(() => {
   <section class="relative overflow-hidden py-12 h-[250vh] md:h-[290vh] lg:h-[410vh]">
     <div class="mx-auto px-6 max-w-7xl">
       <div class="relative space-y-0">
-        <article v-for="(project, index) in projects" :key="project.id" :style="{ top: `${index * 40 + 80}px` }"
-          :ref="(el) => (cards[index] = el)"
-          class="group gpu top-16 md:top-24 relative border border-white/10 bg-white/[0.03] shadow-[0_0_50px_rgba(255,255,255,0.04)] backdrop-blur-xl rounded-[2rem] overflow-hidden">
+        <RouterLink v-for="(project, index) in projects" :key="project.id" :to="`/projects/${project.slug}`"
+          :ref="(el) => (cards[index] = el?.$el || el)"
+          class="group gpu top-16 md:top-24 relative block border border-white/10 bg-white/[0.03] shadow-[0_0_50px_rgba(255,255,255,0.04)] backdrop-blur-xl rounded-[2rem] overflow-hidden">
           <div class="relative h-[420px] sm:h-[520px] lg:h-[720px] overflow-hidden">
             <img :src="project.image" :alt="project.title"
               class="project-image w-full h-full object-cover scale-100 transition-transform duration-700" />
@@ -122,7 +99,7 @@ onUnmounted(() => {
               </div>
             </div>
           </div>
-        </article>
+        </RouterLink>
       </div>
     </div>
   </section>

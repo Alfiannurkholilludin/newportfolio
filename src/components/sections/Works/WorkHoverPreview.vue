@@ -3,7 +3,8 @@ import { ref, watch, onMounted, onUnmounted } from 'vue'
 import gsap from 'gsap'
 
 const props = defineProps({
-  work: Object,
+  active: Boolean,
+  image: String,
   mouseX: Number,
   mouseY: Number
 })
@@ -14,8 +15,6 @@ let xTo = null
 let yTo = null
 
 onMounted(() => {
-  if (!previewRef.value) return
-
   xTo = gsap.quickTo(previewRef.value, 'x', {
     duration: 0.6,
     ease: 'power3.out'
@@ -30,31 +29,29 @@ onMounted(() => {
 watch(
   () => [props.mouseX, props.mouseY],
   () => {
-    if (!previewRef.value || !props.work) return
+    if (!previewRef.value) return
 
     xTo(props.mouseX + 40)
-    yTo(props.mouseY - 180)
+    yTo(props.mouseY - 120)
   }
 )
 
 watch(
-  () => props.work,
-  (work) => {
+  () => props.active,
+  (active) => {
     if (!previewRef.value) return
 
-    if (work) {
+    if (active) {
       gsap.to(previewRef.value, {
         opacity: 1,
         scale: 1,
-        rotate: 0,
         duration: 0.5,
         ease: 'power3.out'
       })
     } else {
       gsap.to(previewRef.value, {
         opacity: 0,
-        scale: 0.85,
-        rotate: -6,
+        scale: 0.8,
         duration: 0.4,
         ease: 'power3.out'
       })
@@ -73,32 +70,17 @@ onUnmounted(() => {
     class="top-0 left-0 z-[999] fixed hidden md:block opacity-0 pointer-events-none"
   >
     <div
-      v-if="work"
-      class="relative rounded-[28px] overflow-hidden w-[320px] h-[420px] bg-neutral-900 shadow-2xl"
+      class="relative rounded-3xl overflow-hidden w-[320px] h-[420px]"
     >
       <img
-        :src="work.image"
-        :alt="work.title"
-        class="w-full h-full object-cover scale-110"
+        :src="image"
+        alt=""
+        class="w-full h-full object-cover"
       />
 
-      <div class="absolute inset-0 bg-black/20" />
-
       <div
-        class="bottom-0 left-0 absolute p-8 w-full"
-      >
-        <p
-          class="mb-2 text-white/60 text-xs uppercase tracking-[0.3em]"
-        >
-          {{ work.category }}
-        </p>
-
-        <h3
-          class="font-semibold text-3xl text-white leading-none"
-        >
-          {{ work.title }}
-        </h3>
-      </div>
+        class="absolute inset-0 bg-black/10"
+      />
     </div>
   </div>
 </template>

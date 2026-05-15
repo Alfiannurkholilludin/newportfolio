@@ -1,10 +1,14 @@
 <script setup>
 import { ref } from 'vue'
 import { works } from '@/data/works'
+
 import WorkItem from '@/components/sections/Works/WorkItem.vue'
 import WorksPreview from '@/components/sections/Works/WorksPreview.vue'
 
 const activeWork = ref(null)
+
+const mouseX = ref(0)
+const mouseY = ref(0)
 
 const setActiveWork = (work) => {
     activeWork.value = work
@@ -13,10 +17,15 @@ const setActiveWork = (work) => {
 const clearActiveWork = () => {
     activeWork.value = null
 }
+
+const handleMouseMove = (e) => {
+    mouseX.value = e.clientX
+    mouseY.value = e.clientY
+}
 </script>
 
 <template>
-    <section class="relative px-6 md:px-12 pt-40 pb-20">
+    <section class="relative px-6 md:px-12 pt-40 pb-20" @mousemove="handleMouseMove">
         <!-- BACK BUTTON -->
         <div class="mb-16 md:mx-20">
             <RouterLink to="/"
@@ -31,6 +40,7 @@ const clearActiveWork = () => {
                 </span>
             </RouterLink>
         </div>
+
         <div class="mx-auto max-w-7xl">
             <div class="mb-24">
                 <h1 class="font-bold text-[14vw] md:text-[9vw] leading-none tracking-[-0.06em]">
@@ -44,6 +54,6 @@ const clearActiveWork = () => {
             </div>
         </div>
 
-        <WorksPreview :work="activeWork" />
+        <WorksPreview :work="activeWork" :mouse-x="mouseX" :mouse-y="mouseY" />
     </section>
 </template>

@@ -25,7 +25,7 @@ import defaultLogo from '@/assets/images/logo/logolight.png'
 const menuItems = [
  { label: 'Home', ariaLabel: 'Go to home page', link: '/' },
  { label: 'About', ariaLabel: 'Learn about us', link: '/about' },
- { label: 'Blog', ariaLabel: 'View our blog', link: '/Blog' },
+ { label: 'Works', ariaLabel: 'View our works', link: '/works' },
 //  { label: 'Contact', ariaLabel: 'Get in touch', link: '/contact' }
 ]
 

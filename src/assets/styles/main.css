@@ -17,6 +17,17 @@ body {
     font-family: var(--font-aspekta);
 }
 
+html,
+body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
 @theme {
     --font-aspekta: 'Aspekta', sans-serif;
 }

@@ -28,11 +28,11 @@ onMounted(() => {
     element: sceneRef.value,
     engine,
     options: {
-      width,
-      height,
+      width: sceneRef.value.clientWidth,
+      height: sceneRef.value.clientHeight,
       wireframes: false,
       background: 'transparent',
-      pixelRatio: window.devicePixelRatio
+      pixelRatio: window.devicePixelRatio,
     }
   })
 
@@ -65,28 +65,56 @@ onMounted(() => {
   Composite.add(engine.world, walls)
 
   // OBJECTS
-  for (let i = 0; i < 18; i++) {
-    const radius = Math.random() * 70 + 30
+  const isMobile = window.innerWidth < 768
 
-    const circle = Bodies.circle(
-      Math.random() * width,
-      Math.random() * -height,
-      radius,
+  const techStacks = [
+    'Vue.js',
+    'GSAP',
+    'Tailwind',
+    'Matter.js',
+    'JavaScript',
+    'Figma',
+    'Node.js',
+    'Laravel',
+    'Vite',
+    'Lenis',
+  ]
+
+  techStacks.forEach((tech, i) => {
+    const fontSize = isMobile ? 11 : 14
+    const paddingX = isMobile ? 20 : 32
+    const height = isMobile ? 40 : 56
+
+    const width = tech.length * (isMobile ? 9 : 14) + paddingX
+
+    const capsule = Bodies.rectangle(
+      Math.random() * window.innerWidth,
+      Math.random() * -window.innerHeight,
+      width,
+      height,
       {
         restitution: 0.9,
         friction: 0.01,
         density: 0.001,
+        chamfer: {
+          radius: height / 2,
+        },
         render: {
           fillStyle:
             i % 2 === 0
-              ? 'rgba(255,255,255,0.12)'
-              : 'rgba(255,255,255,0.22)'
-        }
+              ? 'rgba(255,255,255,0.08)'
+              : 'rgba(255,255,255,0.14)',
+          strokeStyle: 'rgba(255,255,255,0.12)',
+          lineWidth: 1,
+        },
       }
     )
 
-    Composite.add(engine.world, circle)
-  }
+    capsule.labelText = tech
+    capsule.fontSize = fontSize
+
+    Composite.add(engine.world, capsule)
+  })
 
   // MOUSE
   const mouse = Mouse.create(render.canvas)
@@ -130,10 +158,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div
-    ref="sceneRef"
-    class="absolute inset-0 z-0"
-  />
+  <div ref="sceneRef" class="absolute inset-0 w-full h-full" />
 </template>
 
 <style scoped>

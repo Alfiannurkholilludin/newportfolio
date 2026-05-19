@@ -71,27 +71,36 @@ onMounted(() => {
   // OBJECTS
   const isMobile = window.innerWidth < 768
 
-  const techStacks = [
-    'Vue.js',
-    'GSAP',
-    'Tailwind',
-    'Matter.js',
-    'JavaScript',
-    'Figma',
-    'Node.js',
-    'Laravel',
-    'Vite',
-    'Lenis',
-  ]
+  const techStacks = isMobile
+    ? [
+      'Vue',
+      'GSAP',
+      'Tailwind',
+      'Figma',
+      'Vite',
+      'Lenis',
+    ]
+    : [
+      'Vue.js',
+      'GSAP',
+      'Tailwind',
+      'Matter.js',
+      'JavaScript',
+      'Figma',
+      'Node.js',
+      'Laravel',
+      'Vite',
+      'Lenis',
+    ]
 
   techStacks.forEach((tech, i) => {
     const isMobile = window.innerWidth < 768
 
-    const fontSize = isMobile ? 11 : 14
-    const paddingX = isMobile ? 20 : 32
-    const height = isMobile ? 40 : 56
+    const fontSize = isMobile ? 10 : 14
+    const paddingX = isMobile ? 18 : 34
+    const height = isMobile ? 34 : 56
 
-    const width = tech.length * (isMobile ? 9 : 14) + paddingX
+    const width = tech.length * (isMobile ? 7.5 : 14) + paddingX
 
     const capsule = Bodies.rectangle(
       Math.random() * window.innerWidth,
@@ -99,10 +108,10 @@ onMounted(() => {
       width,
       height,
       {
-        restitution: 0.9,
-        friction: 0.01,
+        restitution: isMobile ? 0.45 : 0.9,
+        friction: 0.02,
         density: 0.001,
-
+        frictionAir: isMobile ? 0.04 : 0.01,
         chamfer: {
           radius: height / 2,
         },
@@ -128,21 +137,23 @@ onMounted(() => {
   })
 
   // MOUSE
-  const mouse = Mouse.create(render.canvas)
+  if (!isMobile) {
+    const mouse = Mouse.create(render.canvas)
 
-  const mouseConstraint = MouseConstraint.create(engine, {
-    mouse,
-    constraint: {
-      stiffness: 0.2,
-      render: {
-        visible: false
+    const mouseConstraint = MouseConstraint.create(engine, {
+      mouse,
+      constraint: {
+        stiffness: 0.2,
+        render: {
+          visible: false
+        }
       }
-    }
-  })
+    })
 
-  Composite.add(engine.world, mouseConstraint)
+    Composite.add(engine.world, mouseConstraint)
 
-  render.mouse = mouse
+    render.mouse = mouse
+  }
 
   gsap.set(sceneRef.value, {
     opacity: 0,
@@ -224,7 +235,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div ref="sceneRef" class="absolute inset-0 w-full h-full" />
+  <div ref="sceneRef" class="absolute inset-0 w-full h-[90vh] md:h-full" />
 </template>
 
 <style scoped>

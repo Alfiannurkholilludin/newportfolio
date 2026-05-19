@@ -23,9 +23,10 @@ onMounted(() => {
     MouseConstraint
   } = Matter
 
-  const width = window.innerWidth
-  const height = window.innerHeight
+  const bounds = sceneRef.value.getBoundingClientRect()
 
+  const width = bounds.width
+  const height = bounds.height
   engine = Engine.create()
 
   render = Render.create({
@@ -103,8 +104,8 @@ onMounted(() => {
     const width = tech.length * (isMobile ? 7.5 : 14) + paddingX
 
     const capsule = Bodies.rectangle(
-      Math.random() * window.innerWidth,
-      Math.random() * -window.innerHeight,
+      40 + Math.random() * (width - 80),
+      -height - Math.random() * 400,
       width,
       height,
       {
@@ -215,8 +216,14 @@ onMounted(() => {
 
   // RESIZE
   const handleResize = () => {
-    render.canvas.width = window.innerWidth
-    render.canvas.height = window.innerHeight
+    const newWidth = sceneRef.value.clientWidth
+    const newHeight = sceneRef.value.clientHeight
+
+    render.canvas.width = newWidth
+    render.canvas.height = newHeight
+
+    render.options.width = newWidth
+    render.options.height = newHeight
   }
 
   window.addEventListener('resize', handleResize)
@@ -235,7 +242,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div ref="sceneRef" class="absolute inset-0 w-full h-[90vh] md:h-full" />
+  <div ref="sceneRef" class="absolute inset-0 w-full h-[70vh] md:h-full" />
 </template>
 
 <style scoped>

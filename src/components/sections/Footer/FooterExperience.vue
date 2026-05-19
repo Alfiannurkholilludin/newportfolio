@@ -1,6 +1,10 @@
 <script setup>
 import { onMounted, onBeforeUnmount, ref } from 'vue'
 import * as Matter from 'matter-js'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const sceneRef = ref(null)
 
@@ -81,6 +85,8 @@ onMounted(() => {
   ]
 
   techStacks.forEach((tech, i) => {
+    const isMobile = window.innerWidth < 768
+
     const fontSize = isMobile ? 11 : 14
     const paddingX = isMobile ? 20 : 32
     const height = isMobile ? 40 : 56
@@ -96,22 +102,27 @@ onMounted(() => {
         restitution: 0.9,
         friction: 0.01,
         density: 0.001,
+
         chamfer: {
           radius: height / 2,
         },
+
         render: {
           fillStyle:
             i % 2 === 0
               ? 'rgba(255,255,255,0.08)'
               : 'rgba(255,255,255,0.14)',
+
           strokeStyle: 'rgba(255,255,255,0.12)',
           lineWidth: 1,
         },
+
+        plugin: {
+          text: tech,
+          fontSize,
+        },
       }
     )
-
-    capsule.labelText = tech
-    capsule.fontSize = fontSize
 
     Composite.add(engine.world, capsule)
   })
@@ -133,8 +144,63 @@ onMounted(() => {
 
   render.mouse = mouse
 
-  Render.run(render)
-  Runner.run(runner, engine)
+  gsap.set(sceneRef.value, {
+    opacity: 0,
+    y: 120,
+    scale: 0.9,
+  })
+
+  // PAUSE ENGINE DULU
+  runner.enabled = false
+
+  gsap.to(sceneRef.value, {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    duration: 1.6,
+    ease: 'power4.out',
+
+    scrollTrigger: {
+      trigger: sceneRef.value,
+      start: 'top 85%',
+
+      onEnter: () => {
+        Render.run(render)
+        Runner.run(runner, engine)
+
+        // AKTIFKAN PHYSICS
+        runner.enabled = true
+      },
+    },
+  })
+
+  // Render.run(render)
+  // Runner.run(runner, engine)
+
+  Matter.Events.on(render, 'afterRender', () => {
+    const context = render.context
+
+    Composite.allBodies(engine.world).forEach((body) => {
+      if (!body.plugin.text) return
+
+      const text = body.plugin.text
+      const fontSize = body.plugin.fontSize || 14
+
+      context.save()
+
+      context.translate(body.position.x, body.position.y)
+      context.rotate(body.angle)
+
+      context.font = `500 ${fontSize}px Inter, sans-serif`
+      context.fillStyle = '#ffffff'
+      context.textAlign = 'center'
+      context.textBaseline = 'middle'
+
+      context.fillText(text, 0, 1)
+
+      context.restore()
+    })
+  })
 
   // RESIZE
   const handleResize = () => {

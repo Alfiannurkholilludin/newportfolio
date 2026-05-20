@@ -118,13 +118,9 @@ onMounted(() => {
         },
 
         render: {
-          fillStyle:
-            i % 2 === 0
-              ? 'rgba(255,255,255,0.08)'
-              : 'rgba(255,255,255,0.14)',
-
-          strokeStyle: 'rgba(255,255,255,0.12)',
-          lineWidth: 1,
+          fillStyle: 'rgba(255,255,255,0.06)',
+          strokeStyle: 'rgba(255,255,255,0.18)',
+          lineWidth: 1.2,
         },
 
         plugin: {
@@ -198,13 +194,55 @@ onMounted(() => {
       const text = body.plugin.text
       const fontSize = body.plugin.fontSize || 14
 
+      const vertices = body.vertices
+
       context.save()
+
+      // ======================
+      // GLASS SHADOW
+      // ======================
+
+      context.beginPath()
+      context.moveTo(vertices[0].x, vertices[0].y)
+
+      for (let i = 1; i < vertices.length; i++) {
+        context.lineTo(vertices[i].x, vertices[i].y)
+      }
+
+      context.closePath()
+
+      context.shadowColor = 'rgba(255,255,255,0.15)'
+      context.shadowBlur = 30
+
+      // GLASS FILL
+      const gradient = context.createLinearGradient(
+        body.position.x,
+        body.position.y - 40,
+        body.position.x,
+        body.position.y + 40
+      )
+
+      gradient.addColorStop(0, 'rgba(255,255,255,0.14)')
+      gradient.addColorStop(1, 'rgba(255,255,255,0.03)')
+
+      context.fillStyle = gradient
+      context.fill()
+
+      // BORDER
+      context.strokeStyle = 'rgba(255,255,255,0.18)'
+      context.lineWidth = 1
+
+      context.stroke()
+
+      // ======================
+      // TEXT
+      // ======================
 
       context.translate(body.position.x, body.position.y)
       context.rotate(body.angle)
 
       context.font = `500 ${fontSize}px Inter, sans-serif`
-      context.fillStyle = '#ffffff'
+      context.fillStyle = 'rgba(255,255,255,0.92)'
       context.textAlign = 'center'
       context.textBaseline = 'middle'
 
@@ -250,5 +288,7 @@ canvas {
   width: 100% !important;
   height: 100% !important;
   pointer-events: auto;
+  filter:
+    contrast(1.05) saturate(1.1);
 }
 </style>

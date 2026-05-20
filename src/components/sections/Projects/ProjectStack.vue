@@ -58,7 +58,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="relative overflow-hidden py-12 h-[250vh] md:h-[290vh] lg:h-[410vh]">
+  <section class="relative overflow-hidden py-12 h-[250vh] md:h-[290vh] lg:h-[420vh]">
     <div class="mx-auto px-6 max-w-7xl">
       <div class="relative space-y-0">
         <RouterLink v-for="(project, index) in projects" :key="project.id" :to="`/projects/${project.slug}`"

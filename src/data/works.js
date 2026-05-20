@@ -24,7 +24,7 @@ export const works = [
     title: 'SmartCart',
     category: 'Branding',
     year: '2025',
-    slug: 'smartcart',
+    slug: 'smartcart-itc',
     image:
       'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1600&auto=format&fit=crop'
   }

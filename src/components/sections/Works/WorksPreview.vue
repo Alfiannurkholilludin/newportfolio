@@ -78,6 +78,7 @@ onUnmounted(() => {
     >
       <img
         :src="work.image"
+        :loading="lazy"
         :alt="work.title"
         class="w-full h-full object-cover scale-110"
       />

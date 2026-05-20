@@ -1,34 +1,33 @@
-import { createRouter, createWebHistory } from "vue-router";
-import Home from "@/views/Home.vue";
-import ProjectDetailView from "@/views/ProjectDetailView.vue";
-import WorksView from '@/views/WorksView.vue'
-
-const routes = [
-  {
-    path: "/",
-    component: Home,
-  },
-  {
-    path: "/projects/:slug",
-    name: "project-detail",
-    component: ProjectDetailView,
-  },
-  {
-  path: '/works',
-  name: 'works',
-  component: WorksView
-},
-];
+import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
-   history: createWebHistory(),
-  routes,
+  history: createWebHistory(import.meta.env.BASE_URL),
 
-  scrollBehavior() {
-    return {
-      top: 0
-    }
-  }
-});
+  routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: () => import('@/views/Home.vue'),
+    },
 
-export default router;
+    {
+      path: '/works',
+      name: 'works',
+      component: () => import('@/views/WorksView.vue'),
+    },
+
+    {
+      path: '/about',
+      name: 'about',
+      component: () => import('@/views/AboutView.vue'),
+    },
+
+    {
+      path: '/projects/:slug',
+      name: 'project-detail',
+      component: () => import('@/views/ProjectDetailView.vue'),
+    },
+  ],
+})
+
+export default router

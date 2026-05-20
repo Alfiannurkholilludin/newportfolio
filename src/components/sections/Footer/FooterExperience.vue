@@ -251,21 +251,21 @@ onMounted(() => {
       context.restore()
     })
   })
-
-  // RESIZE
-  const handleResize = () => {
-    const newWidth = sceneRef.value.clientWidth
-    const newHeight = sceneRef.value.clientHeight
-
-    render.canvas.width = newWidth
-    render.canvas.height = newHeight
-
-    render.options.width = newWidth
-    render.options.height = newHeight
-  }
-
   window.addEventListener('resize', handleResize)
 })
+
+const handleResize = () => {
+  if (!sceneRef.value || !render) return
+
+  const width = sceneRef.value.clientWidth
+  const height = sceneRef.value.clientHeight
+
+  render.canvas.width = width
+  render.canvas.height = height
+
+  render.options.width = width
+  render.options.height = height
+}
 
 onBeforeUnmount(() => {
   Matter.Render.stop(render)
@@ -274,6 +274,8 @@ onBeforeUnmount(() => {
   if (render.canvas) {
     render.canvas.remove()
   }
+
+  window.removeEventListener('resize', handleResize)
 
   render.textures = {}
 })

@@ -26,8 +26,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <footer ref="footerRef"
-  class="relative overflow-hidden px-6 md:px-12 pt-32 md:pt-40 pb-10 text-white">
+  <footer ref="footerRef" class="relative overflow-hidden px-6 md:px-12 pt-32 md:pt-40 pb-10 text-white">
     <!-- MATTER -->
     <div class="absolute inset-0 z-10">
       <FooterExperience />

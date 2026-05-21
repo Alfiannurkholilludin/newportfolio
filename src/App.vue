@@ -4,6 +4,7 @@ import { useLenis } from '@/composables/useLenis'
 import CursorFollower from '@/components/common/CursorFollower.vue'
 import LoaderIntro from '@/components/loader/LoaderIntro.vue'
 import PageTransition from '@/components/transition/PageTransition.vue'
+import GradualBlur from '@/components/common/GradualBlur.vue'
 
 const { initLenis, destroyLenis } = useLenis()
 
@@ -27,6 +28,7 @@ onUnmounted(() => {
           <component :is="Component" />
         </PageTransition>
       </Transition>
+      <GradualBlur position="bottom" height="220px" />
     </RouterView>
   </div>
 </template>

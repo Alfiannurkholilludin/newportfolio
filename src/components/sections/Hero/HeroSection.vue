@@ -1,6 +1,7 @@
 <script setup>
 import HeroBackground from '@/components/sections/Hero/HeroBackground.vue'
 import HeroContent from '@/components/sections/Hero/HeroContent.vue'
+import GradualBlur from '@/components/common/GradualBlur.vue'
 </script>
 
 <template>

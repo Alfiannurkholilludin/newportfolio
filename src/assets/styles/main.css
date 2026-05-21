@@ -58,3 +58,8 @@ html.lenis body {
   transform: translateZ(0);
   backface-visibility: hidden;
 }
+
+.mask-gradient {
+  mask-image: linear-gradient(to bottom, transparent, black);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black);
+}

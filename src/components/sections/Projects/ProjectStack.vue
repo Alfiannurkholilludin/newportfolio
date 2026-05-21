@@ -2,7 +2,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
+import { MoveRight } from '@lucide/vue';
 import { projects } from '@/data/projects'
 import { RouterLink } from 'vue-router'
 
@@ -93,7 +93,7 @@ onUnmounted(() => {
 
                   <span
                     class="inline-flex justify-center items-center bg-white group-hover/btn:bg-[#0f0f0f] rounded-full w-8 h-8 text-black group-hover/btn:text-[#f5f5f5] transition-all duration-500">
-                    →
+                    <MoveRight class="w-4 h-4" />
                   </span>
                 </button>
               </div>

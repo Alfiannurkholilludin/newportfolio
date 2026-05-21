@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import { MoveRight } from '@lucide/vue';
 import gsap from 'gsap'
 
 const magneticRef = ref(null)
@@ -60,7 +61,7 @@ const handleMouseLeave = () => {
     <span
       class="flex justify-center items-center bg-white rounded-full w-7 sm:w-8 h-7 sm:h-8 text-black transition-transform duration-300 group-hover:translate-x-1 shrink-0"
     >
-      →
+      <MoveRight class="w-4 h-4" />
     </span>
   </button>
 </template>

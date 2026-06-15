@@ -2,7 +2,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { MoveRight } from '@lucide/vue';
+import { MoveRight } from '@lucide/vue'
 import { projects } from '@/data/projects'
 import { RouterLink } from 'vue-router'
 
